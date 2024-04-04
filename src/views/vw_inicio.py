@@ -1,5 +1,5 @@
 import flet as ft
-from veridian.src.models.vw_models.mdl_vw_inicio import BotaoIcone
+from src.models.vw_models.mdl_vw_inicio import BotaoIcone
 
 
 class Inicio:

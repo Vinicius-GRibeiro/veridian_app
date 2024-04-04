@@ -1,5 +1,5 @@
 import flet as ft
-from veridian.src.models.vw_models.mdl_vw_login import CaixaDeTexto, BotaoTexto, BotaoComum
+from src.models.vw_models.mdl_vw_login import CaixaDeTexto, BotaoTexto, BotaoComum
 
 
 class Login:

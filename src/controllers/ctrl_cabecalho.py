@@ -1,5 +1,5 @@
 import flet as ft
-from veridian.src.controllers.ctrl_usuarios import Usuario
+from src.controllers.ctrl_usuarios import Usuario
 
 
 class Cabecalho:

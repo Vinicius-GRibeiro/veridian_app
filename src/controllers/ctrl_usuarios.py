@@ -1,4 +1,4 @@
-from veridian.src.controllers.ctrl_conexao import Conexao
+from src.controllers.ctrl_conexao import Conexao
 
 
 db = Conexao()

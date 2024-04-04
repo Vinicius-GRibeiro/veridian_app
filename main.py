@@ -1,7 +1,7 @@
 import flet as ft
 from screeninfo import get_monitors
 from src.controllers.ctrl_utils import proporcao_celular
-from src.views import vw_login, vw_inicio
+from src.views import vw_inicio
 from assets import fonts
 from src.controllers.ctrl_menu import CtrlMenu
 from src.controllers.ctrl_cabecalho import Cabecalho

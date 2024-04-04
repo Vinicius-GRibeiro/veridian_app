@@ -1,5 +1,5 @@
 import flet as ft
-from veridian.src.views import vw_inicio, vw_historico_consultas, vw_nova_consulta, vw_carteirinha, vw_conta
+from src.views import vw_carteirinha, vw_conta, vw_inicio, vw_historico_consultas, vw_nova_consulta
 
 
 class BotaoMenu:

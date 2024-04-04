@@ -1,8 +1,8 @@
 import flet as ft
-from veridian.src.controllers.ctrl_utils import mostrar_notificacao
-from veridian.src.controllers.ctrl_credenciais import Credencial, gerar_hash, comparar_hash
-from veridian.src.controllers.ctrl_menu import CtrlMenu
-from veridian.src.views.vw_inicio import Inicio
+from src.controllers.ctrl_utils import mostrar_notificacao
+from src.controllers.ctrl_credenciais import Credencial, gerar_hash, comparar_hash
+from src.controllers.ctrl_menu import CtrlMenu
+from src.views.vw_inicio import Inicio
 
 
 class CaixaDeTexto:
