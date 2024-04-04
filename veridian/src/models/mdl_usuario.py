@@ -1,6 +1,6 @@
-from .endereco import Endereco
-from .contato import Contato
-from .credenciais import Credenciais
+from .mdl_endereco import Endereco
+from .mdl_contato import Contato
+from .mdl_credenciais import Credenciais
 
 
 class Usuario:

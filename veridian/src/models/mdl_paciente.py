@@ -1,4 +1,4 @@
-from .usuario import *
+from .mdl_usuario import *
 
 
 class Paciente(Usuario):

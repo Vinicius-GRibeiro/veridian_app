@@ -1,5 +1,5 @@
-from _conexao import Conexao
-from usuarios import Usuario
+from ctrl_conexao import Conexao
+from ctrl_usuarios import Usuario
 
 db = Conexao()
 
@@ -39,9 +39,10 @@ class Medico:
         db.executar_query(query)
 
 
-# crm = ['1000', '2000', '3000', '4000']
-# especialidades = ['cardiologista', 'pediatra', 'fonoaudiólogo', 'ortopedista']
-# cpfs = Usuario.buscar(colunas='cpf')[4:8:]
-#
-# for n, item in enumerate(crm):
-#     Medico.adicionar(crm=item, especialidade=especialidades[n], cpf_usuario=cpfs[n][0])
+if __name__ == '__main__':
+    crm = ['1000', '2000', '3000', '4000']
+    especialidades = ['cardiologista', 'pediatra', 'fonoaudiólogo', 'ortopedista']
+    cpfs = Usuario.buscar(colunas='cpf')[4:8:]
+
+    for n, item in enumerate(crm):
+        Medico.adicionar(crm=item, especialidade=especialidades[n], cpf_usuario=cpfs[n][0])

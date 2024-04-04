@@ -1,5 +1,5 @@
-from usuarios import Usuario
-from _conexao import Conexao
+from ctrl_usuarios import Usuario
+from ctrl_conexao import Conexao
 
 db = Conexao()
 
@@ -39,8 +39,9 @@ class Funcionario:
         db.executar_query(query)
 
 
-cpfs = Usuario.buscar('cpf')[8::]
-cargos = ['recepcionista', 'gerente', 'auxiliar de serviços gerais', 'recepcionista']
+if __name__ == '__main__':
+    cpfs = Usuario.buscar('cpf')[8::]
+    cargos = ['recepcionista', 'gerente', 'auxiliar de serviços gerais', 'recepcionista']
 
-for n, carg in enumerate(cargos):
-    Funcionario.adicionar(cargo=carg, cpf_usurio=cpfs[n][0])
+    for n, carg in enumerate(cargos):
+        Funcionario.adicionar(cargo=carg, cpf_usurio=cpfs[n][0])

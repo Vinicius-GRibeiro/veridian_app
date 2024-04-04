@@ -1,5 +1,5 @@
-from _conexao import Conexao
-from usuarios import Usuario
+from ctrl_conexao import Conexao
+from ctrl_usuarios import Usuario
 
 db = Conexao()
 
@@ -39,12 +39,13 @@ class Paciente:
         db.executar_query(query)
 
 
-# rh = ['A+', 'O-', 'AB+', 'AB-']
-# alergia = ['', 'frutos do mar', 'dipirona', '']
-# convenios = ['CA', 'CB', 'CC', 'CD']
-# cpfs = Usuario.buscar(colunas='cpf')[:4:]
-#
-# for n, item in enumerate(rh):
-#     Paciente.adicionar(rh=item, alergias=alergia[n], convenio=convenios[n], cpf_usario=cpfs[n][0])
+if __name__ == '__main__':
+    rh = ['A+', 'O-', 'AB+', 'AB-']
+    alergia = ['', 'frutos do mar', 'dipirona', '']
+    convenios = ['CA', 'CB', 'CC', 'CD']
+    cpfs = Usuario.buscar(colunas='cpf')[:4:]
+
+    for n, item in enumerate(rh):
+        Paciente.adicionar(rh=item, alergias=alergia[n], convenio=convenios[n], cpf_usario=cpfs[n][0])
 
 

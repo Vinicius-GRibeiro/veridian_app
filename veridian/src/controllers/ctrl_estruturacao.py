@@ -1,5 +1,5 @@
 import sqlite3
-from _conexao import Conexao
+from ctrl_conexao import Conexao
 
 db = Conexao()
 
@@ -36,6 +36,7 @@ def criar_tabelas():
             genero TEXT,
             id_endereco INTEGER,
             id_contato INTEGER,
+            img TEXT,
             FOREIGN KEY (id_endereco) REFERENCES enderecos(id),
             FOREIGN KEY (id_contato) REFERENCES contatos(id)
         )
@@ -99,4 +100,5 @@ def criar_tabelas():
     db.fechar_conexao()
 
 
-criar_tabelas()
+if __name__ == '__main__':
+    criar_tabelas()

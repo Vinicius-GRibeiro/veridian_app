@@ -1,7 +1,5 @@
-from usuarios import Usuario
-from contato import Contato
-from _conexao import Conexao
-from criptografia import gerar_hash
+from veridian.src.controllers.ctrl_conexao import Conexao
+from veridian.src.controllers.ctrl_criptografia import gerar_hash, comparar_hash
 
 db = Conexao()
 
@@ -19,12 +17,17 @@ class Credencial:
 
     @classmethod
     def buscar(cls, colunas='*', condicao=None):
-        query = f'SELECT {colunas} from credenciais'
+
+        query = f"SELECT {colunas} FROM credenciais"
 
         if condicao is not None:
-            query += f' WHERE {condicao}'
-
+            query += f" WHERE {condicao}"
         dados = db.executar_query(query, operacao_de_consulta=True)
+        dados_ = None
+        if dados is not None:
+            dados_ = [x[0] for x in dados]
+
+        return dados_
 
     @classmethod
     def editar(cls, id: int, dicionario_campo_valor):
@@ -39,15 +42,3 @@ class Credencial:
     def excluir(cls, condicao):
         query = f'DELETE FROM credenciais WHERE {condicao}'
         db.executar_query(query)
-
-
-senhas = ['tLM8U7Un', 'GWrOYrEH', '2Hxh8u8e', 'FjAuw0NO', 'FXwl1Jcj', 'NbMDu8ZS', 'ZGYNRYkt', 'D4c27KyP', 'c270wYcR',
-          'eObiYCIU', 'Lw0cJWPR', 'XPMKGFGk']
-
-cpfs = Usuario.buscar(colunas='cpf')
-ids_contato = Usuario.buscar(colunas='id_contato')
-emails = []
-
-for n, id in enumerate(ids_contato):
-    Credencial.adicionar(login=Contato.buscar(colunas='email', condicao=f'id={id[0]}')[0][0],
-                         senha=senhas[n], cpf=cpfs[n][0])
