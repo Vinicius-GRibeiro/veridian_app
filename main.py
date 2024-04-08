@@ -1,21 +1,28 @@
 import flet as ft
+from assets import fonts
 from screeninfo import get_monitors
 from src.controllers.ctrl_utils import proporcao_celular
-from src.views import vw_inicio
-from assets import fonts
-from src.controllers.ctrl_menu import CtrlMenu
-from src.controllers.ctrl_cabecalho import Cabecalho
+from src.views.componentes_compartilhados.vwc_menu import CtrlMenu
+from src.views.view_historico_consultas.vwc_selecao_filtros import CardFiltrosDeConsultas
+from src.views.view_historico_consultas.vw_main_historico_consultas import HistoricoConsultas
 
 
 AJUSTE_ALTURA_CELULAR = -50
 altura_monitor, largura_monitor = get_monitors()[0].height, get_monitors()[0].width
 altura_celular, largura_celular = proporcao_celular(altura_monitor, largura_monitor)
 
-
 def main(page: ft.Page):
+    # TODO: REMOVER CPF E INCREMENTAR VARIÁVEL DE SESSÃO NO LOGIN
+    page.session.set('user_cpf', '08604635165')
+
+    # Adição do componente para filtrar consultas, na lista de overlays da página
+    # Esse componente deve ser SEMPRE o primeiro da lista.
+    page.overlay.append(CardFiltrosDeConsultas(page).get)
+
     #  Instanciando a tela de login
-    # view_login = vw_login.Login(page)  # 0
-    view_inicio = vw_inicio.Inicio(page)
+    # view_inicio = vw_inicio.Inicio(page)
+    # view_login = Login(page)  # 0
+    view_historico = HistoricoConsultas(page)
 
     #  Definindo as fontes do projeto
     page.fonts = fonts.fonts
@@ -28,7 +35,7 @@ def main(page: ft.Page):
     page.spacing = 0
     page.theme = ft.theme.Theme(color_scheme_seed=ft.colors.TEAL)
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.bgcolor = ft.colors.SURFACE_VARIANT
+    page.bgcolor = '#FBFAF3'
     page.window_width = largura_celular
     page.window_height = altura_celular + AJUSTE_ALTURA_CELULAR
 
@@ -40,19 +47,17 @@ def main(page: ft.Page):
     page.window_top = True
     page.window_center = True
 
-    # TODO: REMOVER CPF E INCREMENTAR VARIÁVEL DE SESSÃO NO LOGIN
-    page.session.set('user_id', '53406890857')
-
     # TODO: REMOVER MENU
     page.navigation_bar = CtrlMenu(page).get
 
-    # TODO: REMOVER CABEÇALHO
-    page.appbar = Cabecalho(page).get
-
-    #TODO: TROCAR VIEW INICIAL
-    #  View inicial
+    # TODO: TROCAR VIEW INICIAL
     # page.add(view_login.get_view)
-    page.add(view_inicio.get_view)
+    # page.add(view_inicio.get_view)
+    page.add(view_historico.get_view)
+
+    # TODO: REMOVER ADIÇÃO DE OVERLAY HARDCODED
+    page.overlay[0].open = True
+    page.overlay[0].update()
 
 
 if __name__ == '__main__':

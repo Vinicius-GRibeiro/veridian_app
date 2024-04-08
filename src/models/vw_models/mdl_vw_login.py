@@ -1,31 +1,31 @@
 import flet as ft
 from src.controllers.ctrl_utils import mostrar_notificacao
 from src.controllers.ctrl_credenciais import Credencial, gerar_hash, comparar_hash
-from src.controllers.ctrl_menu import CtrlMenu
-from src.views.vw_inicio import Inicio
+from src.views.componentes_compartilhados.vwc_menu import CtrlMenu
+from src.views.view_inicio.vw_main_inicio import Inicio
 
 
 class CaixaDeTexto:
-    def __init__(self, label: str, is_senha: bool = False):
+    def __init__(self, label: str, icone: str, is_senha: bool = False):
         self.label = label
+        self.icone = icone
         self.is_senha = is_senha
         self.get = self._get()
 
     def _get(self) -> ft.TextField:
         caixa = ft.TextField(
-            label=self.label,
-            border_color=ft.colors.ON_PRIMARY,
-            focused_border_color=ft.colors.ON_PRIMARY,
+            hint_text=self.label,
+            border_color='transparent',
+            border_radius=16,
             password=self.is_senha,
+            bgcolor='#F3F2E9',
+            width=300,
+            prefix_icon=self.icone,
             can_reveal_password=True if self.is_senha else None,
             text_style=ft.TextStyle(
-                font_family='robotothin',
-                color=ft.colors.ON_PRIMARY
+                font_family='nunito-semibold',
+                color='#424242'
             ),
-            label_style=ft.TextStyle(
-                font_family='robotothin',
-                color=ft.colors.ON_PRIMARY
-            )
         )
 
         return caixa
@@ -55,11 +55,19 @@ class BotaoComum:
 
     def _get(self) -> ft.FilledButton:
         btn = ft.FilledButton(
-            width=150,
-            content=ft.Text(value=self.texto, color=ft.colors.ON_PRIMARY, font_family='robotolight', size=20),
+            width=300,
+            height=50,
+            content=ft.Row(
+                alignment=ft.MainAxisAlignment.CENTER,
+                controls=[
+                    ft.Text(value=self.texto, color='#FBFAF3', font_family='nunito-xbold', size=15),
+                    ft.Icon(name=ft.icons.ARROW_FORWARD_ROUNDED, color='#FBFAF3')
+                ]
+            ),
             style=ft.ButtonStyle(
                 overlay_color='transparent',
-                bgcolor='transparent',
+                bgcolor='#0BAB7C',
+                shape=ft.RoundedRectangleBorder(radius=12)
             ),
             on_click=lambda e: self._ao_clicar(e)
         )

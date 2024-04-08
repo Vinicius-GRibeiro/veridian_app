@@ -1,5 +1,9 @@
 import flet as ft
-from src.views import vw_carteirinha, vw_conta, vw_inicio, vw_historico_consultas, vw_nova_consulta
+from src.views.view_nova_consulta import vw_nova_consulta
+from src.views.view_conta import vw_conta
+from src.views.view_carteirinha import vw_carteirinha
+from src.views.view_historico_consultas import vw_main_historico_consultas
+from src.views.view_inicio import vw_main_inicio
 
 
 class BotaoMenu:
@@ -9,8 +13,8 @@ class BotaoMenu:
 
     def _get_botao(self) -> ft.NavigationDestination:
         return ft.NavigationDestination(
-            icon_content=ft.Icon(name=f'{self._icone}_OUTLINED', color=ft.colors.ON_SECONDARY_CONTAINER),
-            selected_icon_content=ft.Icon(name=f'{self._icone}_ROUNDED', color=ft.colors.ON_SECONDARY_CONTAINER),
+            icon_content=ft.Icon(name=f'{self._icone}_ROUNDED', color='#646F67'),
+            selected_icon_content=ft.Icon(name=f'{self._icone}_ROUNDED', color='#FFFFFF'),
         )
 
 
@@ -21,7 +25,9 @@ class CtrlMenu:
 
     def _get_menu(self) -> ft.NavigationBar:
         return ft.NavigationBar(
-            bgcolor=ft.colors.SURFACE,
+            bgcolor='#F2F2E8',
+            indicator_color='#0BAB7D',
+            indicator_shape=ft.RoundedRectangleBorder(radius=15),
             selected_index=0,
             destinations=[
                 BotaoMenu(icone='HOME').get, BotaoMenu(icone='ARTICLE').get, BotaoMenu(icone='ADD_CIRCLE').get,
@@ -35,10 +41,10 @@ class CtrlMenu:
 
         if indice_pagina == 0:
             self.pagina.clean()
-            self.pagina.add(vw_inicio.Inicio(self.pagina).get_view)
+            self.pagina.add(vw_main_inicio.Inicio(self.pagina).get_view)
         elif indice_pagina == 1:
             self.pagina.clean()
-            self.pagina.add(vw_historico_consultas.HistoricoConsultas().get_view)
+            self.pagina.add(vw_main_historico_consultas.HistoricoConsultas(self.pagina).get_view)
         elif indice_pagina == 2:
             self.pagina.clean()
             self.pagina.add(vw_nova_consulta.NovaConsulta().get_view)

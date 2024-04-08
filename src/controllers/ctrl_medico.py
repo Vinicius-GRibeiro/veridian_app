@@ -1,5 +1,5 @@
-from ctrl_conexao import Conexao
-from ctrl_usuarios import Usuario
+from src.controllers.ctrl_conexao import Conexao
+from src.controllers.ctrl_usuarios import Usuario
 
 db = Conexao()
 
@@ -20,7 +20,6 @@ class Medico:
 
         if condicao is not None:
             query += f' WHERE {condicao}'
-
         dados = db.executar_query(query, operacao_de_consulta=True)
         return dados
 

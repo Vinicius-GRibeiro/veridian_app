@@ -4,5 +4,13 @@ fonts = {
     'robotolight': 'fonts/Roboto-Light.ttf',
     'robotomedium': 'fonts/Roboto-Medium.ttf',
     'robotoregular': 'fonts/Roboto-Regular.ttf',
-    'robotothin': 'fonts/Roboto-Thin.ttf'
+    'robotothin': 'fonts/Roboto-Thin.ttf',
+    'nunito-black': 'fonts/Nunito-Black.ttf',
+    'nunito-bold': 'fonts/Nunito-Bold.ttf',
+    'nunito-xbold': 'fonts/Nunito-ExtraBold.ttf',
+    'nunito-xlight': 'fonts/Nunito-ExtraLight.ttf',
+    'nunito-light': 'fonts/Nunito-Light.ttf',
+    'nunito-medium': 'fonts/Nunito-Medium.ttf',
+    'nunito-regular': 'fonts/Nunito-Regular.ttf',
+    'nunito-semibold': 'fonts/Nunito-SemiBold.ttf',
 }

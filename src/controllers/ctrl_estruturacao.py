@@ -82,6 +82,18 @@ def criar_tabelas():
         )
     '''
 
+    query_criar_tabela_consultas = '''
+            CREATE TABLE IF NOT EXISTS consultas(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                cpf_paciente TEXT,
+                cpf_medico TEXT,
+                timestamp TEXT,
+                status TEXT DEFAULT 'agendado',
+                FOREIGN KEY (cpf_paciente) REFERENCES pacientes(cpf_usuario),
+                FOREIGN KEY (cpf_medico) REFERENCES medicos(cpf_usuario)
+            )
+        '''
+
     queries = [
         query_criar_tabela_enderecos,
         query_criar_tabela_contatos,
@@ -89,7 +101,8 @@ def criar_tabelas():
         query_criar_tabela_pacientes,
         query_criar_tabela_medicos,
         query_criar_tabela_funcionarios,
-        query_criar_tabela_credenciais
+        query_criar_tabela_credenciais,
+        query_criar_tabela_consultas
     ]
 
     db.abrir_conexao()

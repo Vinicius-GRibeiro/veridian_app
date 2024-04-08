@@ -18,16 +18,12 @@ class Usuario:
     @classmethod
     def buscar(cls, colunas='*', condicao=None):
         query = f'SELECT {colunas} from usuarios'
-
         if condicao is not None:
-            query += f' WHERE {condicao}'
+            query += f" WHERE {condicao}"
+
         dados = db.executar_query(query, operacao_de_consulta=True)
-        dados_ = None
 
-        if dados is not None:
-            dados_ = [x[0] for x in dados]
-
-        return dados_
+        return dados
 
     @classmethod
     def editar(cls, id: int, dicionario_campo_valor):
