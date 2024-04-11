@@ -24,6 +24,15 @@ class Medico:
         return dados
 
     @classmethod
+    def buscar_unicos(self, colunas='*', condicao=None):
+        query = f'SELECT DISTINCT {colunas} from medicos'
+
+        if condicao is not None:
+            query += f' WHERE {condicao}'
+        dados = db.executar_query(query, operacao_de_consulta=True)
+        return dados
+
+    @classmethod
     def editar(self, id: int, dicionario_campo_valor):
         campos = ', '.join([f"{campo} = ?" for campo in dicionario_campo_valor.keys()])
 

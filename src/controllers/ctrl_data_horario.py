@@ -18,3 +18,8 @@ def converter_timestamp(timestamp):
     data_hora_formatada = data_hora_obj.strftime("%d/%m/%Y %H:%M")
 
     return data_hora_formatada.split()
+
+
+def formatar_dd_mm_aaaa(data):
+    data_formatada = datetime.strptime(data, '%Y-%m-%d %H:%M:%S').strftime('%d/%m/%Y')
+    return data_formatada

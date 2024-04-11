@@ -1,4 +1,5 @@
 import flet as ft
+from src.views.view_historico_consultas.vwc_selecao_filtros import CardFiltrosDeConsultas
 
 
 class BotaoFiltro:
@@ -6,6 +7,7 @@ class BotaoFiltro:
         self.pagina = page
         self.icone_filtro = ft.icons.FILTER_NONE_ROUNDED
         self.qntd_filtro = 0
+        self.card_filtro_de_consultas = CardFiltrosDeConsultas(page)
 
         self.filtros_icones = {
             0: ft.icons.FILTER_NONE_ROUNDED,
@@ -32,5 +34,6 @@ class BotaoFiltro:
         return btn
 
     def _ao_clicar(self):
+        self.pagina.overlay.append(self.card_filtro_de_consultas.get)
         self.pagina.overlay[0].open = True
         self.pagina.overlay[0].update()
