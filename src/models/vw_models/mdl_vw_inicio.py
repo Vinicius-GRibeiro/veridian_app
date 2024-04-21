@@ -12,16 +12,17 @@ class CaixaDeTexto:
         txt = ft.TextField(
             suffix_icon=self.icone_sufixo,
             suffix_style=ft.TextStyle(
-                color='#ACADAC'
+                color='#649C84'
             ),
             hint_text=self.dica,
-            bgcolor='#F2F2E8',
+            bgcolor='#E8F0E6',
             text_style=ft.TextStyle(
-                font_family='nunito-medium'
+                font_family='nunito-medium',
+                color='#1D1D35'
             ),
             hint_style=ft.TextStyle(
                 font_family='nunito-medium',
-                color='#ACADAC'
+                color='#1D1D35'
             ),
             border_color='transparent',
             border_radius=20,
@@ -50,9 +51,9 @@ class CartaoDeInformacaoClinicasProximas:
                         alignment=ft.MainAxisAlignment.CENTER,
                         spacing=0,
                         controls=[
-                            ft.Text(value='Clínicas por perto', font_family='nunito-bold', color='#323234'),
+                            ft.Text(value='Clínicas por perto', font_family='nunito-bold', color='#1D1D35'),
                             ft.Text(value='Buscando clínicas perto de você?\nProcure uma agora',
-                                    font_family='nunito-regular', color='#716F7B'),
+                                    font_family='nunito-regular', color='#323234'),
                             ft.Container(height=20),
                             ft.FilledButton(content=ft.Text(value='BUSCAR', font_family='nunito-black',
                                                             color='#FFFFFF'), style=ft.ButtonStyle(
@@ -83,7 +84,7 @@ class CartaoConsultas:
         self.hora_consulta = hora_consulta
         self.status_consulta = status_consulta
         self.user_image_urlm = url_imagem_medico
-        self.cor_indicador = '#3AC199' if self.status_consulta == 'agendado' or self.status_consulta == 'realizado' else '#ED2E1C'
+        self.cor_indicador = '#0BAB7D' if self.status_consulta == 'agendado' or self.status_consulta == 'realizado' else '#EC744D'
         self.get = self._get()
 
     def _get(self) -> ft.Container:
@@ -91,7 +92,7 @@ class CartaoConsultas:
             key=self.id_consulta,
             border_radius=20,
             padding=20,
-            bgcolor='#D8D0FF',
+            bgcolor=ft.colors.with_opacity(color='#6BC17A', opacity=.4),
             alignment=ft.alignment.center,
             content=ft.Row(
                 alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
@@ -101,13 +102,14 @@ class CartaoConsultas:
                     ft.Container(
                         width=90,
                         height=110,
-                        bgcolor='#6048E6',
+                        bgcolor='#0BAB7D',
                         border_radius=16,
                         padding=0,
                         content=ft.Image(
                             src=self.user_image_urlm,
                             expand=True,
-                            fit=ft.ImageFit.COVER
+                            fit=ft.ImageFit.COVER,
+                            error_content=ft.Icon(name=ft.icons.INFO, color='#EFFDF6', size=50)
                         )
                     ),
 
@@ -118,13 +120,13 @@ class CartaoConsultas:
                             horizontal_alignment=ft.CrossAxisAlignment.START,
                             spacing=0,
                             controls=[
-                                ft.Text(value=f"Dr. {self.nome_medico}", color='#2B2B29', font_family='nunito-black',
+                                ft.Text(value=f"Dr. {self.nome_medico}", color='#1D1D35', font_family='nunito-black',
                                         size=20),
-                                ft.Text(value=f"{self.especialidade.capitalize()}", color='#7C7989',
+                                ft.Text(value=f"{self.especialidade.capitalize()}", color='#2B2B29',
                                         font_family='nunito-bold', size=17),
 
                                 ft.Text(value=f"{self.data_consulta} - {self.hora_consulta}",
-                                        font_family='nunito-regular', color='#7C7989', size=15),
+                                        font_family='nunito-regular', color='#2B2B29', size=15),
                                 ft.Container(height=10),
                                 ft.Row(
                                     alignment=ft.MainAxisAlignment.END,

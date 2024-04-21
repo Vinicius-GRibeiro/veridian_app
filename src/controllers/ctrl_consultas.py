@@ -18,10 +18,14 @@ class Consulta:
         db.executar_query(query, dados)
 
     @classmethod
-    def buscar(cls, colunas='*', condicao=None):
-        query = f'SELECT {colunas} from consultas'
+    def buscar(cls, colunas='*', condicao=None, ordenar_por=None):
+        query = f"SELECT {colunas} from consultas"
+
         if condicao is not None:
             query += f" WHERE {condicao}"
+
+        if ordenar_por is not None:
+            query += f" ORDER BY {ordenar_por}"
 
         dados = db.executar_query(query, operacao_de_consulta=True)
 

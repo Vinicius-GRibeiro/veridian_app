@@ -14,7 +14,7 @@ class BotaoMenu:
     def _get_botao(self) -> ft.NavigationDestination:
         return ft.NavigationDestination(
             icon_content=ft.Icon(name=f'{self._icone}_ROUNDED', color='#646F67'),
-            selected_icon_content=ft.Icon(name=f'{self._icone}_ROUNDED', color='#FFFFFF'),
+            selected_icon_content=ft.Icon(name=f'{self._icone}_ROUNDED', color='#EFFDF6'),
         )
 
 

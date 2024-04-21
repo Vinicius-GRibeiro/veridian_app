@@ -9,7 +9,7 @@ from src.models.vw_models.mdl_vw_inicio import CaixaDeTexto, CartaoDeInformacaoC
 class Inicio:
     def __init__(self, pagina: ft.Page):
         self.pagina = pagina
-        self.pagina.bgcolor = '#FBFBF3'
+        self.pagina.bgcolor = '#EFFDF6'
         self.pagina.update()
 
         self.user_cpf = self.pagina.session.get('user_cpf')
@@ -59,9 +59,9 @@ class Inicio:
             spacing=0,
             controls=[
 
-                ft.Container(height=20, bgcolor='#F2F2E8'),
+                ft.Container(height=20, bgcolor='#0BAB7D'),
                 ft.Container(
-                    bgcolor='#F2F2E8',
+                    bgcolor='#0BAB7D',
                     content=ft.Row(
                         alignment=ft.MainAxisAlignment.SPACE_AROUND,
                         spacing=0,
@@ -72,7 +72,7 @@ class Inicio:
                                     ft.Text(value=f'Olá, {self.user_shortname}', font_family='nunito-bold', size=20,
                                             color='#212121'),
                                     ft.Text(value=f'bem vindo(a)', font_family='nunito-regular', size=15,
-                                            color='#647080', weight=ft.FontWeight.BOLD)
+                                            color='#EFFDF6', weight=ft.FontWeight.BOLD)
                                 ]
                             ),
 
@@ -80,15 +80,14 @@ class Inicio:
 
                             ft.CircleAvatar(
                                 foreground_image_url=self.user_profile_img_url,
-                                content=ft.Text(value=self.user_iniciais, color='#FFFFFF',
+                                content=ft.Text(value=self.user_iniciais, color='#212121',
                                                 text_align=ft.TextAlign.CENTER),
-                                bgcolor='#0BAB7D'
+                                bgcolor='#EFFDF6'
                             ),
                         ]
                     ),
                 ),
-                ft.Container(height=20, bgcolor='#F2F2E8',
-                             border_radius=ft.BorderRadius(bottom_left=24, bottom_right=24, top_right=0, top_left=0)),
+                ft.Container(height=20, bgcolor='#0BAB7D'),
 
                 ft.Container(height=20),
 

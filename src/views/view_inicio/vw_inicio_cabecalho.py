@@ -25,9 +25,9 @@ class Cabecalho:
                 ),
             ),
             actions=[
-                ft.IconButton(icon=ft.icons.SEARCH ,icon_color=ft.colors.ON_PRIMARY)
+                ft.IconButton(icon=ft.icons.SEARCH, icon_color=ft.colors.ON_PRIMARY)
             ],
-            bgcolor=ft.colors.with_opacity(opacity=.9, color=ft.colors.ON_SECONDARY_CONTAINER),
+            bgcolor='#0BAB7D'
 
         )
 

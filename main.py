@@ -1,10 +1,12 @@
+from pprint import pprint
+
 import flet as ft
 from assets import fonts
 from screeninfo import get_monitors
 from src.controllers.ctrl_utils import proporcao_celular
 from src.views.componentes_compartilhados.vwc_menu import CtrlMenu
 from src.views.view_historico_consultas.vw_main_historico_consultas import HistoricoConsultas
-from src.views.view_historico_consultas.vwc_selecao_filtros import CardFiltrosDeConsultas, CalendarioFiltroDeConsulta
+from src.views.view_historico_consultas.vw_main_historico_consultas import CalendarioFiltroDeConsulta
 
 
 AJUSTE_ALTURA_CELULAR = -50
@@ -20,7 +22,6 @@ def main(page: ft.Page):
 
     # Adição de componentes de overlay
     # Estes componentes devem ser adicionados nessa exata ordem
-    page.overlay.append(CardFiltrosDeConsultas(page).get)
     page.overlay.append(CalendarioFiltroDeConsulta(page).get)
 
     #  Instanciando a tela de login
@@ -39,7 +40,7 @@ def main(page: ft.Page):
     page.spacing = 0
     page.theme = ft.theme.Theme(color_scheme_seed=ft.colors.TEAL)
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.bgcolor = '#FBFAF3'
+    page.bgcolor = '#ECF0F1'
     page.window_width = largura_celular
     page.window_height = altura_celular + AJUSTE_ALTURA_CELULAR
 
@@ -58,10 +59,6 @@ def main(page: ft.Page):
     # page.add(view_login.get_view)
     # page.add(view_inicio.get_view)
     page.add(view_historico.get_view)
-
-    # TODO: REMOVER ABERTURA DE OVERLAY DE FILTROS HARDCODED
-    page.overlay[0].open = True
-    page.overlay[0].update()
 
 
 if __name__ == '__main__':

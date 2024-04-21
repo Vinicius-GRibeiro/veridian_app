@@ -89,6 +89,8 @@ def criar_tabelas():
                 cpf_medico TEXT,
                 timestamp TEXT,
                 status TEXT DEFAULT 'agendado',
+                especialidade TEXT,
+                obs TEXT,
                 FOREIGN KEY (cpf_paciente) REFERENCES pacientes(cpf_usuario),
                 FOREIGN KEY (cpf_medico) REFERENCES medicos(cpf_usuario)
             )
